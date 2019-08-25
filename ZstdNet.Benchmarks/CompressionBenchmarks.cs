@@ -5,36 +5,23 @@ using BenchmarkDotNet.Running;
 namespace ZstdNet.Benchmarks
 {
     [MemoryDiagnoser]
-    public class CompressionOverheadBenchmarks
+    public class CompressionBenchmarks
     {
-        const int TestSize = 1024;
+        byte[] Test = new byte[1024];
+        byte[] Dest = new byte[1024 * 2];
 
-        byte[] UncompressedData = new byte[TestSize];
-        byte[] CompressedData;
-
-        byte[] Buffer = new byte[Compressor.GetCompressBound(TestSize)];
-
-        Compressor Compressor = new Compressor(new CompressionOptions(1));
-        Decompressor Decompressor = new Decompressor();
-
-        public CompressionOverheadBenchmarks()
+        public CompressionBenchmarks()
         {
             var r = new Random(0);
-            r.NextBytes(UncompressedData);
-
-            CompressedData = Compressor.Wrap(UncompressedData);
+            r.NextBytes(Test);
         }
+
+        Compressor ZNetCompressor = new Compressor(new CompressionOptions(1));
 
         [Benchmark]
         public void Compress1KBRandom()
         {
-            Compressor.Wrap(UncompressedData, Buffer, 0);
-        }
-
-        [Benchmark]
-        public void Decompress1KBRandom()
-        {
-            Decompressor.Unwrap(CompressedData, Buffer, 0);
+            ZNetCompressor.Wrap(Test, Dest, 0);
         }
     }
 }
