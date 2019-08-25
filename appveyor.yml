@@ -3,6 +3,7 @@ image: Visual Studio 2019
 build_script:
 - cmd: >-
     dotnet --version
+    
     dotnet pack -c Release --output ../artifacts ZstdNet/ZstdNet.csproj
 test_script:
 - cmd: dotnet test ZstdNet.Tests/ZstdNet.Tests.csproj
