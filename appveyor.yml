@@ -7,4 +7,4 @@ build_script:
 test_script:
 - cmd: dotnet test ZstdNet.Tests/ZstdNet.Tests.csproj
 artifacts:
-- path: artifacts\**\*.nupkg
+- path: artifacts/*.nupkg
