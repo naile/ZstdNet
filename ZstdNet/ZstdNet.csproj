@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Version>1.3.3</Version>
+		<Version>1.3.4</Version>
 		<TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
-		<Title>ZstdNet</Title>
-		<PackageId>ZstdNet</PackageId>
+		<Title>ZstdNet2</Title>
+		<PackageId>ZstdNet2</PackageId>
 		<Company>SKB Kontur</Company>
 		<Authors>SKB Kontur</Authors>
 		<Description>Zstd compression library wrapper for .NET</Description>
